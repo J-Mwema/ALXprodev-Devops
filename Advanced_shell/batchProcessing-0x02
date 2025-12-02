@@ -1,0 +1,20 @@
+# Make a list of Pokemon
+
+# Loop through the list
+
+# Retrieve data from the API
+
+# Save data in separate files
+
+# Handle rate-limiting
+
+# Error handling
+
+# Detect if a request fails
+
+# Implement a retry mechanism
+
+# Log errors if all retries fail
+
+# Skip to the next Pokemon
+
