@@ -8,11 +8,11 @@ output_dir="pokemon_data"
 mkdir -p "$output_dir"
 
 # Error log file
-error_log="errors_txt"
+error_log="errors.txt"
 
 
 # Loop through each Pokemon
-for pokemon in "${pokemon_list[@}}"; do
+for pokemon in "${pokemon_list[@]}"; do
     echo "Fetching data for ${pokemon}..."
 
     # API URL
