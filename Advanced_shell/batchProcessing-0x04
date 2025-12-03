@@ -1,7 +1,36 @@
-# Use background processes
+#!/bin/bash
 
-# Handle multiple Pokemon
+# List of Pokémon to retrieve
+pokemon_list=("bulbasaur" "ivysaur" "venusaur" "charmander" "charmeleon")
 
-# Wait for all background processes
+# Output directory
+output_dir="pokemon_data_parallel"
+mkdir -p "$output_dir"
 
-# Limit number of concurrent processes (optional)
+# Fetch function (runs in parallel)
+fetch_pokemon() {
+    pokemon=$1
+    url="https://pokeapi.co/api/v2/pokemon/$pokemon"
+    output_file="${output_dir}/${pokemon}.json"
+
+    echo "Fetching data for $pokemon..."
+
+    # Retrieve data
+    if curl -s "$url" -o "$output_file"; then
+        echo "Saved data to $output_file ✅"
+    else
+        echo "Failed to fetch $pokemon ❌" >> errors_parallel.txt
+    fi
+}
+
+# Launch all processes in parallel
+for pokemon in "${pokemon_list[@]}"; do
+    fetch_pokemon "$pokemon" &
+done
+
+# Wait for all background jobs to finish
+wait
+
+echo
+echo "All parallel requests completed."
+
