@@ -23,6 +23,9 @@ fetch_pokemon() {
     fi
 }
 
+# Ensure background processes are cleaned up on script exit
+trap 'kill 0' EXIT
+
 # Launch all processes in parallel
 for pokemon in "${pokemon_list[@]}"; do
     fetch_pokemon "$pokemon" &
