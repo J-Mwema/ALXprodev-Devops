@@ -26,4 +26,3 @@ cd Advanced_shell/apiAutomation-0x00
 ls -la
 ```
 
-3. If you find a missing README in a subfolder, I can create one summarizing its files as well.
